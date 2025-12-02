@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>QCM CACES –  Les acteurs de prévention</title>
+<title>QCM CACES – La réglementation</title>
 <style>
   /* ---------- Thème & layout ---------- */
   :root { --orange:#ff6600; --noir:#222; --gris:#f3f3f3; }
@@ -74,7 +74,7 @@
 <body>
 
   <!-- Banniere + titre -->
-  <div class="banner" id="quizBanner">🚧  Les acteurs de prévention 🚜</div>
+  <div class="banner" id="quizBanner">🚧 La réglementation 🚜</div>
   <h1>ÉVALUATION</h1>
   <p class="subtitle" id="quizSubtitle">Répondez aux questions tirées au hasard</p>
 
@@ -109,7 +109,7 @@
    ============================ */
 
 /* Nom visible du quiz */
-const QUIZ_NAME = " Les acteurs de prévention";
+const QUIZ_NAME = "La réglementation";
 
 /* URL Google Apps Script (fourni) */
 const RESULTS_ENDPOINT = "https://script.google.com/macros/s/AKfycbzSnnlxH2dCzkVqobrQX-E4n4lo-WcxoDvmLHr7cLn35d4xploO_K3p9tNuY0OweRsW/exec";
@@ -120,73 +120,39 @@ const RESULTS_ENDPOINT = "https://script.google.com/macros/s/AKfycbzSnnlxH2dCzkV
    - on peut facilement modifier / ajouter des questions
    ============================ */
 const allQuestions = [
-  {"text":"L'employeur est un acteur de prévention interne à l'entreprise","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"L'ensemble du personnel de l'entreprise est un acteur de prévention interne à l'entreprise","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"Le comité social et économique est un acteur de prévention interne à l'entreprise","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"L'employeur n'est pas un acteur de prévention interne à l'entreprise","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"L'ensemble du personnel de l'entreprise n'est pas un acteur de prévention interne à l'entreprise","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"Le comité social et économique n'est pas un acteur de prévention interne à l'entreprise","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"Le rôle de l'employeur est d'assurrer la santé et la sécurité des travailleurs","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"L'employeur de délivre pas l'autorisation de conduite","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"La responsabilité de l'employeur est exclusivement civiles","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"La responsabilité de l'employeur est civiles et pénales","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"L'employeur doit procéder aux vérifications obligatoires","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"L'employeur doit mettre à disposition des équipements de travail conformes","answers":["Vrai","Faux"],"correct":"Vrai"},
-  "answers":["Vrai","Faux"],
-  {"text":"L'ensemble du personnel doit respecter le règlement interieur et les consignes","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"L'ensemble du personnel n'a pas l'obligation de savoir utiliser la procédure du droit de retrait","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"L'ensemble du personnel doit signaler à l'employeur les dangers graves","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"L'ensemble du personnel doit respecter le code de la route sur la voie publique","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"Un salarié doit protéger sa securité mais pas celle des autres","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"L'abréviation CSE signifie Comité Social et Entreprise","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"Le CSE enquête sur les accidents","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"Le CSE ne peut pas inspecter des postes de travail","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"La mission du CSE est la protection de la santé des salariés","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"La sécurité des salariés n'est pas la mission du CSE","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"Le représentant de la CARSAT est un acteur de prévention interne à l'entreprise","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"L'inspecteur du travail est un acteur de prevention externe à l'entreprise","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"Le médecin du travail n'est pas un acteur de prévention","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"Le fabricant d'engins de chantier est un acteur de prévention externe à l'entreprise","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"Un organisme de contrôle (VGP) est un acteur de prévention interne à l'entreprise","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"L'OPPBTP n'est pas un acteur de prévention","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"L'inspecteur du travail contrôle le respect de la règlementation du travail","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"L'inspecteur du travail ne réalise pas de missions de conseil","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"L'inspecteur du travail enquête sur les conditions de travail","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"L'inspecteur du travail à le droit d'entrer de jour comme de nuit dans une entreprise","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"L'inspecteur du travail n'a pas le pouvoir de faire cesser une situation dangereuse lors d'un contrôle","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"L'inspecteur du travail peut imposer la réalisation des vérifications réglementaires","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"L'inspecteur du travail ne peut pas dresser de procès verbaux en cas d'infraction","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"Le médecin du travail a un rôle préventif","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"Le médecin du travail réalise les visites périodiques","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"Le médecin du travail ne réalise pas la visite d'embauche d'un salarié","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"Un salarié peut demander spontanément un visite médicale auprès du médecin du travail","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"L'employeur ne peut pas demander une visite médicale pour un salarié","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"Le représentant de la CARSAT a un rôle de conseil","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"Le représentant de la CARSAT n'effectue pas de diagnostic de sécurité","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"Le représentant de la CARSAT analyse les risques","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"Le représentant de la CARSAT peut sensibiliser les employeurs mais pas les employés","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"Le représentant de la CARSAT peut demander l'intervention de l'inspecteur du travail","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"Le représentant de la CARSAT ne peut pas imposer des cotisations supplémentaires","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"Le représentant de la CARSAT peut constater des infractions","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"Le fabricant de matériel a la responsabilité de mettre à disposition du matériel conforme au code du travail","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"La déclaration de conformité du fabricant n'est pas un document attestant de la conformité du matériel","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"Le marquage CE sur le matériel est un documents attestant de la conformité du matériel","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"L'état de conformité d'un équipement de travail est consigné sur le registre de sécurité","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"L'OPPBTP conseille les entreprises dans le domaine de la sécurité, protection santé et amélioration des conditions de travail","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"L'OPPBTP réalise des formations CACES","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"Le coordonnateur SPS signifie coordonnateur Santé ,Prévention des Salariés","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"Le coordonnateur SPS est un acteur de l'encadrement de chantier","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"La mission du coordonnateur SPS concerne strictement la prévention et la sécurité des travailleurs","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"Le coordonnateur n'établie pas les documents spécifiques aux chantiers","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"La définition de l'installation de chantier n'est pas la mission du conducteur de travaux","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"La gestion des délais, la qualité et les coûts est une mission du conducteur de travaux","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"Le chef de chantier dirige le conducteur de travaux","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"Le conducteur de travaux dirige le chef de chantier","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"Le chef de chantier organise et dirige au quotidien un chantier","answers":["Vrai","Faux"],"correct":"Vrai"},
-  {"text":"Un chef de chantier ne fait pas de bilans journaliers","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"Le chef d'équipe dirige le chef de chantier","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"Le conducteur de travaux dirige le chef d'équipe","answers":["Vrai","Faux"],"correct":"Faux"},
-  {"text":"Un chef d'équipe a pour mission d'organiser le travail des ouvriers de son équipe","answers":["Vrai","Faux"],"correct":"Vrai"}
+  {text:"Le conducteur d'un engin de chantier est réglementé par le code du travail.", answers:["Vrai","Faux"], correct:"Vrai"},
+  {text:"Le conducteur d'un engin de chantier est réglementé par le code de la route.", answers:["Vrai","Faux"], correct:"Faux"},
+  {text:"Le conducteur d'un engin de chantier est réglementé par la recommandation R482.", answers:["Vrai","Faux"], correct:"Faux"},
+  {text:"Le matériel est réglementé par le code du travail.", answers:["Vrai","Faux"], correct:"Vrai"},
+  {text:"Le CACES engins de chantier est réglementé par la recommandation R482.", answers:["Vrai","Faux"], correct:"Vrai"},
+  {text:"Le CACES engins de chantier est réglementé par la recommandation R489.", answers:["Vrai","Faux"], correct:"Faux"},
+  {text:"La conduite sur route d'un engin n'est pas réglementée.", answers:["Vrai","Faux"], correct:"Faux"},
+  {text:"La conduite sur route d'un engin est réglementée par le code de la route.", answers:["Vrai","Faux"], correct:"Vrai"},
+  {text:"La conduite d'engins de chantier est interdite aux personnes âgées de moins de 18 ans.", answers:["Vrai","Faux"], correct:"Vrai"},
+  {text:"Des dérogations peuvent être obtenues pour conduire un engin de chantier avant 18 ans.", answers:["Vrai","Faux"], correct:"Vrai"},
+  {text:"La conduite d'engins de chantier est autorisée à partir de 16 ans.", answers:["Vrai","Faux"], correct:"Faux"},
+  {text:"La conduite d'engins de chantier est autorisée à partir de 15 ans avec une dérogation.", answers:["Vrai","Faux"], correct:"Vrai"},
+  {text:"Pour conduire un engin de chantier de catégorie 2 sur la route, le permis B est obligatoire.", answers:["Vrai","Faux"], correct:"Faux"},
+  {text:"Pour conduire un engin de chantier de catégorie 2 sur la route, le permis C est obligatoire.", answers:["Vrai","Faux"], correct:"Faux"},
+  {text:"Pour conduire un engin de chantier de catégorie 2 sur la route, le permis n'est pas obligatoire.", answers:["Vrai","Faux"], correct:"Vrai"},
+  {text:"La vitesse sur la route d'un engin de chantier de catégorie 2 est limitée à 20 km/h.", answers:["Vrai","Faux"], correct:"Faux"},
+  {text:"La vitesse sur la route d'un engin de chantier de catégorie 2 est limitée à 25 km/h.", answers:["Vrai","Faux"], correct:"Vrai"},
+  {text:"La formation du conducteur d'engins de chantier est obligatoire selon le code du travail.", answers:["Vrai","Faux"], correct:"Vrai"},
+  {text:"Toute personne conduisant un engin de chantier en permanence ou occasionnellement doit être formé.", answers:["Vrai","Faux"], correct:"Vrai"},
+  {text:"La formation CACES R482 forme sur les connaissances et le savoir faire pour la conduite en sécurité.", answers:["Vrai","Faux"], correct:"Vrai"},
+  {text:"Le chef d'entreprise délivre l'autorisation de conduite au conducteur d'engin.", answers:["Vrai","Faux"], correct:"Vrai"},
+  {text:"Le conducteur doit conserver l'autorisation de conduite sur lui, sur les chantiers et la voie publique.", answers:["Vrai","Faux"], correct:"Vrai"},
+  {text:"L'autorisation de conduite permet uniquement de conduire le type d'engin utilisé pendant la formation.", answers:["Vrai","Faux"], correct:"Vrai"},
+  {text:"Pour délivrer une autorisation de conduite, le chef d'entreprise doit s'assurer de l'aptitude médicale du conducteur.", answers:["Vrai","Faux"], correct:"Vrai"},
+  {text:"Pour délivrer une autorisation de conduite, le chef d'entreprise doit s'assurer que le conducteur a suivi une évaluation théorique et pratique en conduite en sécurité.", answers:["Vrai","Faux"], correct:"Vrai"},
+  {text:"L'aptitude médicale est attestée par le médecin du travail.", answers:["Vrai","Faux"], correct:"Vrai"},
+  {text:"Le conducteur d'engins n'a pas l'obligation de présenter son autorisation de conduite lors d'un contrôle de l'inspecteur du travail.", answers:["Vrai","Faux"], correct:"Faux"},
+  {text:"Le conducteur de l'engin de chantier est responsable du matériel.", answers:["Vrai","Faux"], correct:"Vrai"},
+  {text:"Le conducteur de l'engin de chantier est responsable du chargement qu'il manipule.", answers:["Vrai","Faux"], correct:"Vrai"},
+  {text:"Le conducteur de l'engin de chantier est responsable de la sécurité dans sa zone de travail.", answers:["Vrai","Faux"], correct:"Vrai"},
+  {text:"Une agence d'intérim a l'obligation de former le conducteur mis à disposition d'une entreprise.", answers:["Vrai","Faux"], correct:"Vrai"},
+  {text:"Une agence d'intérim a l'obligation de faire réaliser une visite médicale au conducteur mis à disposition d'une entreprise.", answers:["Vrai","Faux"], correct:"Vrai"},
+  {text:"Une agence d'intérim a l'obligation de faire évaluer les connaissances et savoir-faire du conducteur mis à disposition d'une entreprise.", answers:["Vrai","Faux"], correct:"Vrai"}
 ];
 
 /* ============================
